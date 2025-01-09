@@ -6,3 +6,121 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id            String  @id @default(cuid())
+  name          String
+  email         String  @unique
+  password      String
+  createdQuizes Quiz[] 
+  passedQuizes  Quiz[]  @relation("passed_quizes")
+}
+
+model Quiz {
+  id           String          @id @default(cuid())
+  title        String
+  questions    Question[]
+  creator      User            @relation(fields: [creatorId], references: [id])
+  creatorId    String
+  participants User[]          @relation("passed_quizes")
+  settings     QuizSettings?
+  UISettings   QuizUISettings?
+  header       QuizHeader?
+}
+
+model Question {
+  id                String     @id @default(cuid())
+  quiz              Quiz       @relation(fields: [quizId], references: [id])
+  quizId            String
+  name              String
+  require           Boolean    @default(true)
+  answerType        AnswerType
+  answers           Answer[]   @relation("answers")
+  correctAnswers    Answer[]   @relation("correct_answers")
+  image             String?
+  score             Int
+  isAnswersShuffled Boolean   @default(false)
+  lasting           Int?
+  styles            QuestionStyles?
+}
+
+enum AnswerType {
+  MULTIPLE_CHOICE
+  ONE_CHOICE
+  DROPDOWN
+  TEXT
+}
+
+model Answer {
+  id                String   @id @default(cuid())
+  question          Question @relation("answers", fields: [questionId], references: [id])
+  questionId        String
+  correctQuestion   Question @relation("correct_answers", fields: [correctQuestionId], references: [id])
+  correctQuestionId String
+  name              String
+}
+
+model QuizSettings {
+  id                      String          @id @default(cuid())
+  quiz                    Quiz            @relation(fields: [quizId], references: [id])
+  quizId                  String          @unique
+  passingMode             QuizPassingMode @default(CLASSIC)
+  sharingMode             QuizSharingMode @default(PRIVATE)
+  isQuestionsShuffled     Boolean         @default(false)
+  passingTimeStart        DateTime?
+  passingDeadline         DateTime?
+  passingDuration         DateTime?
+  isScreenRecords         Boolean         @default(false)
+  isKeyboardRecords       Boolean         @default(false)
+  isScoreShownAfterSubmit Boolean         @default(true)
+}
+
+enum QuizPassingMode {
+  CLASSIC
+  FOCUSED
+}
+
+enum QuizSharingMode {
+  PUBLIC
+  PRIVATE
+}
+
+model QuizUISettings {
+  id                String  @id @default(cuid())
+  quiz              Quiz    @relation(fields: [quizId], references: [id])
+  quizId            String  @unique
+  questionsFontSize Int     @default(20)
+  textFontSize      Int     @default(16)
+  backgroudColor    String  @default("#ccc")
+}
+
+model QuizHeader {
+  id             String              @id @default(cuid())
+  quiz           Quiz                @relation(fields: [quizId], references: [id])
+  quizId         String              @unique
+  title          String  
+  description    String?
+  image          String?
+  timeDuration   String?
+  headerUIStyles QuizHeaderUIStyles?
+}
+
+model QuizHeaderUIStyles {
+  id              String     @id @default(cuid())
+  header          QuizHeader @relation(fields: [headerId], references: [id])
+  headerId        String     @unique
+  fontSize        Int        @default(20)
+  backgroundColor String     @default("#ccc")
+  logoImage       String?
+}
+
+model QuestionStyles {
+  id         String   @id @default(cuid())
+  question   Question @relation(fields: [questionId], references: [id])
+  questionId String   @unique
+  isBold     Boolean  @default(false)
+  isItalic   Boolean  @default(false)
+  isCrossed  Boolean  @default(false)
+  isCode     Boolean  @default(false)
+  isQuote    Boolean  @default(false)
+}
