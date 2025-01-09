@@ -17,15 +17,16 @@ model User {
 }
 
 model Quiz {
-  id           String          @id @default(cuid())
-  title        String
-  questions    Question[]
-  creator      User            @relation(fields: [creatorId], references: [id])
-  creatorId    String
-  participants User[]          @relation("passed_quizes")
-  settings     QuizSettings?
-  UISettings   QuizUISettings?
-  header       QuizHeader?
+  id                String          @id @default(cuid())
+  title             String
+  questions         Question[]
+  creator           User            @relation(fields: [creatorId], references: [id])
+  creatorId         String
+  participants      User[]          @relation("passed_quizes")
+  participantsCount Int
+  settings          QuizSettings?
+  UISettings        QuizUISettings?
+  header            QuizHeader?
 }
 
 model Question {

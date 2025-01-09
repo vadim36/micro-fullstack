@@ -1,6 +1,6 @@
 export type QuizSettingsEntity = {
-  passingMode: "classic" | "focused",
-  sharingMode: "public" | "private",
+  passingMode: QuizPassingModeType,
+  sharingMode: QuizSharingModeType,
 } & Partial<{
   isQuestionsShuffled: boolean,
   passingTimeStart: number,
@@ -10,6 +10,9 @@ export type QuizSettingsEntity = {
   isKeyboardRecords: boolean,
   isScoreShownAfterSubmit: boolean
 }>
+
+export type QuizPassingModeType = "classic" | "focused"
+export type QuizSharingModeType = "public" | "private"	
 
 export type HeaderUIStylesEntity = {
   fontSize: number,

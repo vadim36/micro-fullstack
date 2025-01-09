@@ -9,5 +9,6 @@ Creating and sharing quizes between users. Participants and conductors can see t
 - Optionally - Add seed scripts to test the database;
 2) Domain Planning
 - Point out essential entities and therefore features
-- Write around the entities in application
+- Write around the entities in application(It's a good practice to devide entities into subentities in accordance with the status of the entity);
 - Describe these entities in the database's model(By the way, the entities in the db and they in the domain can differ because domain describes how convenient it's use in the app, while db describes how convenient it can be stored);
+- Write the repository, it helps with mapping db data into entities;
