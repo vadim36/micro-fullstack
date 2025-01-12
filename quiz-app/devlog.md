@@ -2,13 +2,26 @@
 ## Core Idea
 Creating and sharing quizes between users. Participants and conductors can see the results in the dashboard;
 ## Dev Stages
-1) Project Setup
-- Divide the application into layers, different areas of responsibility, according to the FSD's architecture;
-- Setup the UI kit - in my case I prefer using shadcn/ui library + setup the settings of installation;
-- Setup the storing data - in my case it's a database "sqlite" and SMDB - Prisma;
-- Optionally - Add seed scripts to test the database;
+1) Backend Setup
+- add DB - in my case I prefer sqlite and SMDB - TypeORM;
+- setup GraphQL;
 2) Domain Planning
-- Point out essential entities and therefore features
-- Write around the entities in application(It's a good practice to devide entities into subentities in accordance with the status of the entity);
-- Describe these entities in the database's model(By the way, the entities in the db and they in the domain can differ because domain describes how convenient it's use in the app, while db describes how convenient it can be stored);
-- Write the repository, it helps with mapping db data into entities;
+- Define app's entities;
+- Define the essential features;
+- Write common resolvers;
+- Define db's entities;
+3) Frontend Base
+- 
+
+## Features Order
+1) Dashboard
+- SSO
+- "my quizes"
+- passed quizes
+2) Creating quiz
+3) Sharing quiz
+- Quiz Search Feature with input and quizes list
+- Quiz Difficultness level and amount of questions
+4) Passing quiz
+- Classic Mode
+- Focused Mode

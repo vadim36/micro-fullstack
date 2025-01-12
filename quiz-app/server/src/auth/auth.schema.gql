@@ -1,0 +1,19 @@
+type Query {
+  getName: String
+}
+
+type Mutation {
+  signup(user: User!): AuthPayload!
+}
+
+input User {
+  id: ID
+  firstName: String!
+  lastName: String
+  email: String!
+  password: String
+}
+
+type AuthPayload {
+  token: String!
+}

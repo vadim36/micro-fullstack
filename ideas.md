@@ -1,6 +1,6 @@
 Fullstack pet applications
-- Quiz Application with Next/RabbitMQ/OAuth/SSO/DevOps
-- Singularity Alternative with React/Redux/Electron/ReactNative/Nest/Logs/DevOps
+- Quiz Application with Nest/RabbitMQ/GraphQL/React/Tanstack/ReduxTK/ReactNative/Docker/Kubernetes
+- Singularity Alternative with Angular/Kotlin/Java/DevOps
 - Google Fonts Alternative with React/Redux/Express/DevOps
 - E-commerce Application with Angular/Microservices/Java/Python/DevOps
 - Miro Altenative
