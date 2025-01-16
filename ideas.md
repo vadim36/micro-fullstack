@@ -1,7 +1,7 @@
 Fullstack pet applications
-- Quiz Application with Nest/RabbitMQ/GraphQL/React/Tanstack/ReduxTK/ReactNative/Docker/Kubernetes
-- Singularity Alternative with Angular/Kotlin/Java/DevOps
-- Google Fonts Alternative with React/Redux/Express/DevOps
+- Quiz Application with Next/RabbitMQ/DevOps
+- Singularity Alternative with React/ReactNative/Java/DevOps
+- Google Fonts Alternative with React/Redux/Typescript/DevOps
 - E-commerce Application with Angular/Microservices/Java/Python/DevOps
 - Miro Altenative
 - Music Service
@@ -12,4 +12,5 @@ Fullstack pet applications
 - Map Application
 - Notion Alternative
 - Applications' and websites' CMS
+- The education platform
 - Web Browser Games Engine
